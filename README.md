@@ -1,5 +1,6 @@
-# advent_of_code_2023
-my solutions to the advent of code 2023 puzzles written in haskell
+# Advent of Code 2023
+
+my haskell solutions to the advent of code 2023 puzzles
 
 ![](https://img.shields.io/badge/day%20📅-0-blue)
 
