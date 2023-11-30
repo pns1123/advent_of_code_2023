@@ -8,14 +8,15 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions: 
+    contents: write
     steps:
-      - uses: actions/checkout@v2                # clones your repo
+      - uses: actions/checkout@v2
           
       - uses: joblo2213/aoc-badges-action@v3
         with:
-          userid: 3252921 # your user id, see setup on how to on
-          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
-          
+          userid: 3252921
+          session: ${{ secrets.AOC_SESSION }}
 #         Optional inputs:
 #         
           year: 2023 # The year for which stats should be retrieved
