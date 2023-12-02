@@ -3,4 +3,4 @@ module Lib
     ) where
 
 someFunc :: IO ()
-someFunc = putStrLn "Build Workflow Test"
+someFunc = putStrLn "Build Workflow Test 2"
