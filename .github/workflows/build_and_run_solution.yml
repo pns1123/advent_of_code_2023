@@ -5,6 +5,7 @@ on:
       - 'solutions/day01'
       - 'solutions/day02'
       - 'solutions/day03'
+  workflow_dispatch:
 jobs:
   build-and-run:
     runs-on: ubuntu-22.04
