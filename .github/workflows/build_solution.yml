@@ -32,10 +32,10 @@ jobs:
           CHANGED_FILES=$(git diff --name-only ${{ github.sha }} $PREV_COMMIT_SHA)
 
           # Extract the directory name of the first changed file in the specified directories
-          DIRECTORY=$(echo "$CHANGED_FILES" | grep -E '^dir1/|^dir2/|^dir3/' | head -n 1 | cut -d/ -f1)
+          CHANGED_DIRECTORIES=$(echo "$CHANGED_FILES" | grep -o '^solutions/day[0-9]\{1,2\}')
 
           echo "$CHANGED_FILES"
-          echo "DIRECTORY"
+          echo "$CHANGED_DIRECTORIES"
 
       - name: update stack
         run: stack upgrade
