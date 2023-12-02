@@ -26,7 +26,7 @@ jobs:
       - name: Determine Changed Directory
         run: |
           # Get the SHA of the previous commit
-          PREV_COMMIT_SHA=$(git log -1 --pretty=format:%H ${{ github.sha }}^)
+          PREV_COMMIT_SHA=$(git log --pretty=%H --skip 1 -n 1 ${{ github.sha }})
 
           # Get the list of changed files between the previous and current commit
           CHANGED_FILES=$(git diff --name-only ${{ github.sha }} $PREV_COMMIT_SHA)
