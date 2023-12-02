@@ -4,5 +4,7 @@ jobs:
   build-and-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: install stack
-        run: curl -sSL https://get.haskellstack.org/ | sh
+      - name: update stack
+        run: stack upgrade
+      - name: print stack version
+        run: stack --version
