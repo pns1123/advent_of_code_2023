@@ -17,6 +17,8 @@ jobs:
                    , 'solutions/day03'
                    ]
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
       - name: debug event payload
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -39,10 +41,5 @@ jobs:
         run: stack upgrade
       - name: print stack version
         run: stack --version
-      - name: checkout solutions
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            ${{ matrix.directory  }}
       - name: build and run solution
         run: cd ${{ matrix.directory }} && stack build
