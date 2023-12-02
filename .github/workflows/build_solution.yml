@@ -3,12 +3,12 @@ on:
   push:
     paths:
       - '.github/workflows/build_solution.yml'
-      - 'solutions/day01'
-      - 'solutions/day02'
-      - 'solutions/day03'
+      - 'solutions/day01/**'
+      - 'solutions/day02/**'
+      - 'solutions/day03/**'
   workflow_dispatch:
 jobs:
-  build-and-run:
+  build-solution:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
