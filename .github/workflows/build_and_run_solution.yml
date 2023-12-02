@@ -14,3 +14,5 @@ jobs:
           sparse-checkout: |
             .github
             solutions
+      - name: build and run solution
+        run: cd solutions/day01 && stack build
