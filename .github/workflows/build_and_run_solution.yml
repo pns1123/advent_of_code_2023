@@ -1,10 +1,21 @@
 name: build-and-run-aoc-solution
-on: push
+on: 
+  workflow_dispatch:
+  push:
+    - 'solutions/day01'
+    - 'solutions/day02'
+    - 'solutions/day03'
 jobs:
   build-and-run:
     runs-on: ubuntu-22.04
     steps:
       - name: update stack
+    strategy:
+      matrix:
+        directory: [ 'solutions/day01'
+                   , 'solutions/day02'
+                   , 'solutions/day03'
+                   ]
         run: stack upgrade
       - name: print stack version
         run: stack --version
@@ -12,7 +23,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github
-            solutions
+            ${{ matrix.directory  }}
       - name: build and run solution
-        run: cd solutions/day01 && stack build
+        run: cd ${{ matrix.directory }} && stack build
