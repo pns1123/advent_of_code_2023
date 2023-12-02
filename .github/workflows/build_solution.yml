@@ -21,6 +21,20 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Determine Changed Directory
+        run: |
+          # Get the SHA of the previous commit
+          PREV_COMMIT_SHA=$(git log -1 --pretty=format:%H ${{ github.sha }}^)
+
+          # Get the list of changed files between the previous and current commit
+          CHANGED_FILES=$(git diff --name-only ${{ github.sha }} $PREV_COMMIT_SHA)
+
+          # Extract the directory name of the first changed file in the specified directories
+          DIRECTORY=$(echo "$CHANGED_FILES" | grep -E '^dir1/|^dir2/|^dir3/' | head -n 1 | cut -d/ -f1)
+
+          echo "$CHANGED_FILES"
+          echo "DIRECTORY"
+
       - name: update stack
         run: stack upgrade
       - name: print stack version
