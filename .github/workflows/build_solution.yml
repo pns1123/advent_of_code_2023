@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
+        with: fetch_depth: '2'
       - name: debug event payload
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
