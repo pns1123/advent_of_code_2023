@@ -2,6 +2,7 @@ name: build-and-run-aoc-solution
 on: 
   push:
     paths:
+      - '.github/workflows/build_solution.yml'
       - 'solutions/day01'
       - 'solutions/day02'
       - 'solutions/day03'
