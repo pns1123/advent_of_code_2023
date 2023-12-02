@@ -8,14 +8,14 @@ on:
 jobs:
   build-and-run:
     runs-on: ubuntu-22.04
-    steps:
-      - name: update stack
     strategy:
       matrix:
         directory: [ 'solutions/day01'
                    , 'solutions/day02'
                    , 'solutions/day03'
                    ]
+    steps:
+      - name: update stack
         run: stack upgrade
       - name: print stack version
         run: stack --version
