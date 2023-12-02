@@ -20,14 +20,14 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
         with: 
-          fetch_depth: 2
+          fetch_depth: 0
       - name: debug event payload
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Determine Changed Directory
         run: |
-          git log
+          git log -2
           # Get the SHA of the previous commit
           PREV_COMMIT_SHA=$(git log --pretty=%H --skip 1 -n 1 ${{ github.sha }})
           echo "$PREV_COMMIT_SHA"
