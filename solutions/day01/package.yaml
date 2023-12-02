@@ -1,10 +1,10 @@
 name:                day01
 version:             0.1.0.0
-github:              "githubuser/day01"
+github:              "pns1123/day03"
 license:             BSD-3-Clause
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2023 Author name here"
+author:              "Philipp Schroeppel"
+maintainer:          "69214052+pns1123@users.noreply.github.com"
+copyright:           "Copyright (c) 2023 Philipp Schroeppel"
 
 extra-source-files:
 - README.md
