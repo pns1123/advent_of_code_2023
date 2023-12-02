@@ -1,10 +1,10 @@
 name: build-and-run-aoc-solution
 on: 
-  workflow_dispatch:
   push:
-    - 'solutions/day01'
-    - 'solutions/day02'
-    - 'solutions/day03'
+    paths:
+      - 'solutions/day01'
+      - 'solutions/day02'
+      - 'solutions/day03'
 jobs:
   build-and-run:
     runs-on: ubuntu-22.04
