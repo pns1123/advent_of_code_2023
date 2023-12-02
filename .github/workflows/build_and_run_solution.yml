@@ -1,0 +1,10 @@
+name: build-and-run-aoc-solution
+on: push
+jobs:
+  build-and-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: update system
+        run: apt update && apt upgade
+      - name: install stack
+        run: curl -sSL https://get.haskellstack.org/ | sh
