@@ -8,3 +8,9 @@ jobs:
         run: stack upgrade
       - name: print stack version
         run: stack --version
+      - name: checkout solutions
+        uses: actions/checkout/v4
+        with:
+          sparse-checkout: |
+            .github
+            solutions
