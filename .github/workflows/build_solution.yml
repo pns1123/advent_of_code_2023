@@ -17,8 +17,10 @@ jobs:
                    , 'solutions/day03'
                    ]
     steps:
-      - name: Debug Event Payload
-        run: echo "Event payload: ${{ toJson(github.event) }}"
+      - name: debug event payload
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: update stack
         run: stack upgrade
       - name: print stack version
