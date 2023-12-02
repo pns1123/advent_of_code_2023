@@ -25,6 +25,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Determine Changed Directory
         run: |
+          git log
           # Get the SHA of the previous commit
           PREV_COMMIT_SHA=$(git log --pretty=%H --skip 1 -n 1 ${{ github.sha }})
           echo "$PREV_COMMIT_SHA"
