@@ -6,6 +6,7 @@ on:
       - 'solutions/day01/**'
       - 'solutions/day02/**'
       - 'solutions/day03/**'
+      - 'solutions/day04/**'
 jobs:
   build-solution:
     runs-on: ubuntu-22.04
@@ -14,6 +15,7 @@ jobs:
         directory: [ 'solutions/day01'
                    , 'solutions/day02'
                    , 'solutions/day03'
+                   , 'solutions/day04'
                    ]
     steps:
       - name: checkout repo
