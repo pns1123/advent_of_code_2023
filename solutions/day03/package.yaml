@@ -21,6 +21,9 @@ description:         Please see the README on GitHub at <https://github.com/pns1
 
 dependencies:
 - base >= 4.7 && < 5
+- split == 0.2.3.5
+- unordered-containers == 0.2.19.1
+- hashable == 1.4.3.0
 
 ghc-options:
 - -Wall
