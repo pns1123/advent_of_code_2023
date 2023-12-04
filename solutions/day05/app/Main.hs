@@ -2,5 +2,5 @@ module Main (main) where
 
 import           Lib
 
-main :: String -> IO ()
+main :: IO ()
 main = printSol "filePath"
