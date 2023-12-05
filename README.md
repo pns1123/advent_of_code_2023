@@ -2,6 +2,6 @@
 
 my solutions to the advent of code 2023 puzzles
 
-![](https://img.shields.io/badge/day%20📅-4-blue)      ![](https://img.shields.io/badge/stars%20⭐-8-yellow)      ![](https://img.shields.io/badge/days%20completed-4-red)
+![](https://img.shields.io/badge/day%20📅-5-blue)      ![](https://img.shields.io/badge/stars%20⭐-8-yellow)      ![](https://img.shields.io/badge/days%20completed-4-red)
 
 [![Build Solutions](https://github.com/pns1123/advent_of_code_2023/actions/workflows/build_solution.yml/badge.svg)](https://github.com/pns1123/advent_of_code_2023/actions/workflows/build_solution.yml)
