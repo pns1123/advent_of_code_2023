@@ -8,6 +8,7 @@ on:
       - 'solutions/day03/**'
       - 'solutions/day04/**'
       - 'solutions/day05/**'
+      - 'solutions/day06/**'
 jobs:
   build-solution:
     runs-on: ubuntu-22.04
@@ -17,7 +18,7 @@ jobs:
                    , 'solutions/day02'
                    , 'solutions/day03'
                    , 'solutions/day04'
-                   , 'solutions/day05'
+                   , 'solutions/day06'
                    ]
     steps:
       - name: checkout repo
