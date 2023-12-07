@@ -10,6 +10,7 @@ on:
       - 'solutions/day05/**'
       - 'solutions/day06/**'
       - 'solutions/day07/**'
+      - 'solutions/day08/**'
 
 jobs:
   build-solution:
@@ -22,6 +23,7 @@ jobs:
                    , 'solutions/day04'
                    , 'solutions/day06'
                    , 'solutions/day07'
+                   , 'solutions/day08'
                    ]
     steps:
       - name: checkout repo
