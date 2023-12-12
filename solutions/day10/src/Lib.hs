@@ -2,7 +2,6 @@ module Lib
     ( printSol
     ) where
 
-import           Data.List       (nub)
 import qualified Data.Map.Strict as M
 
 printSol :: String -> IO ()
@@ -10,6 +9,7 @@ printSol filePath = do
     content <- readFile filePath
     let grid = getGrid $ lines content
     print $ solveQ1 grid [(30,118), (30,120)]
+    print $ solveQ2 grid (30,118) (30,119) [(30,119)]
 
 type Node = (Int, Int)
 type Grid = [(Node, Char)]
@@ -26,11 +26,6 @@ getGrid css = [((row, col), c) |
 
 findS :: Grid -> Node
 findS grid = fst . head $ filter ((=='S') . snd) grid
-
-neigh :: Grid -> Node -> [Node]
-neigh grid (row, col) = [v | v <- [(row-1,col), (row,col+1),
-                                   (row+1,col), (row, col-1)],
-                             v `M.member` M.fromList grid]
 
 traverseGraph :: Grid -> DistanceMap -> (Node, Int) -> Node -> DistanceMap
 traverseGraph grid m (c,s) p | nextNode `M.member` m = M.insert c (s+1) m
@@ -60,22 +55,26 @@ transitionInc c cur prev | c == '|' = (c_row-p_row, c_col-p_col)
 
 --Q2
 --
+solveQ2 :: Grid -> Node -> Node -> [Node] -> Int
+solveQ2 grid c p vs = (picksInterior . transform) $ buildCircle grid c p vs
+
 buildCircle :: Grid -> Node -> Node -> [Node] -> [Node]
-buildCircle grid c p acc | nextNode `elem` acc = c:acc
+buildCircle grid c p acc | nextNode `elem` acc = nextNode:c:acc
                          | otherwise             = buildCircle grid nextNode c (c:acc)
                          where nextNode = next grid c p
 
+det :: Node -> Node -> Int
+det (x1, y1) (x2, y2) = x1*y2 - x2*y1
 
-getBoundary :: Grid -> [Node]
-getBoundary grid = [(row, col) | ((row, col),_) <- grid,
-                                 row == 0 || col == 0 || row == maxRow || col == maxCol  ]
-                   where maxRow = maximum [row | ((row,_),_) <- grid]
-                         maxCol = maximum [col | ((_,col),_) <- grid]
+shoelaceArea :: [Node] -> Int
+shoelaceArea [v1,v2]    = det v1 v2
+shoelaceArea (v1:v2:vs) = det v1 v2 + shoelaceArea (v2:vs)
+shoelaceArea _          = error "there cannot one or no remaining nodes"
 
-expand :: Grid -> [Node] -> Node -> [Node]
-expand grid circle v = [n | n <- neigh grid v, n `notElem` circle]
+picksInterior :: [Node] -> Int
+picksInterior vs = shoelaceArea vs `div` 2 - (length (tail vs) `div` 2) + 1
 
-expandOuter :: Grid -> [Node] -> [Node] -> [Node]
-expandOuter grid circle outer = case filter (not . (`elem` outer)) (concat [expand grid circle v | v <- outer]) of
-                                [] -> outer
-                                vs -> expandOuter grid circle (vs ++ outer)
+transform :: [Node] -> [Node]
+transform vs = [(maxRow-x, y-minCol) | (x,y) <- vs]
+             where maxRow = maximum $ fst <$> vs
+                   minCol = minimum $ snd <$> vs
