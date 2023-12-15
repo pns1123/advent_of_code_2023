@@ -21,6 +21,9 @@ description:         Please see the README on GitHub at <https://github.com/pns1
 
 dependencies:
 - base >= 4.7 && < 5
+- split >= 0.2.3
+- containers >= 0.6.7
+- mtl >= 2.2.2
 
 ghc-options:
 - -Wall

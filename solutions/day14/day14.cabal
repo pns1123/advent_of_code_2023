@@ -35,6 +35,9 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , containers >=0.6.7
+    , mtl >=2.2.2
+    , split >=0.2.3
   default-language: Haskell2010
 
 executable day14-exe
@@ -48,7 +51,10 @@ executable day14-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers >=0.6.7
     , day14
+    , mtl >=2.2.2
+    , split >=0.2.3
   default-language: Haskell2010
 
 test-suite day14-test
@@ -63,5 +69,8 @@ test-suite day14-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers >=0.6.7
     , day14
+    , mtl >=2.2.2
+    , split >=0.2.3
   default-language: Haskell2010
